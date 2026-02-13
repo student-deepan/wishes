@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & Social Sharing Meta Tags -->
+    <title>A Special Proposal for My Love ❤️</title>
+    <meta name="description" content="I have a very important question to ask you... please open this to see what's inside my heart.">
+    <meta property="og:title" content="Will You Be My Valentine? ❤️">
+    <meta property="og:description" content="A special surprise journey created just for you. Every moment leads to this question...">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&q=80&w=1000">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Favicon / Logo -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --crimson: #C41E3A;
+            --soft-pink: #FFB7C5;
+            --gold: #D4AF37;
+        }
+
+        body {
+            background: linear-gradient(135deg, #fff5f6 0%, #ffe4e8 100%);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            cursor: none; /* Custom cursor trail */
+        }
+
+        .font-romantic { font-family: 'Dancing Script', cursive; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+
+        /* Custom Cursor Sparkle */
+        .sparkle {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--crimson);
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s linear, opacity 0.5s ease-out;
+        }
+
+        /* Floating Hearts Background */
+        .heart-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-heart {
+            position: absolute;
+            color: var(--crimson);
+            opacity: 0.15;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg) scale(1); }
+            100% { transform: translateY(-10vh) rotate(360deg) scale(1.5); }
+        }
+
+        /* Transitions */
+        .phase-transition {
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+        }
+
+        .hidden-phase {
+            display: none !important;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Flip Card Logic */
+        .flip-card {
+            background-color: transparent;
+            width: 300px;
+            height: 400px;
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .flip-card-back {
+            background-color: white;
+            color: var(--crimson);
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            border: 2px dashed var(--soft-pink);
+        }
+
+        /* Animations */
+        .quiz-float { animation: quizFloat 6s ease-in-out infinite; }
+        @keyframes quizFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        .confetti-heart {
+            position: absolute; width: 20px; height: 20px;
+            background-color: var(--crimson); transform: rotate(-45deg);
+            pointer-events: none;
+        }
+        .confetti-heart::before, .confetti-heart::after {
+            content: ""; position: absolute; width: 20px; height: 20px;
+            background-color: inherit; border-radius: 50%;
+        }
+        .confetti-heart::before { top: -10px; left: 0; }
+        .confetti-heart::after { left: 10px; top: 0; }
+
+        .string { width: 2px; height: 40px; background: #8B4513; margin: 0 auto; }
+        .hanging-card { transform-origin: top center; animation: swing 4s ease-in-out infinite; }
+        @keyframes swing { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+
+        .pulse-gold { animation: pulse 2s infinite; }
+        @keyframes pulse { 
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); } 
+            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); } 
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); } 
+        }
+
+        .btn-gold { background: linear-gradient(45deg, #D4AF37, #F9E2AF); color: #4a3700; transition: all 0.3s ease; }
+        
+        .no-button { 
+            transition: all 0.2s ease; 
+            z-index: 50;
+        }
+
+        .celebration-text { animation: celebratePop 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        @keyframes celebratePop { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+        .music-control {
+            position: fixed; bottom: 20px; right: 20px; z-index: 100;
+            background: rgba(255, 255, 255, 0.8); backdrop-blur: 5px;
+            padding: 8px 15px; border-radius: 50px; display: flex; align-items: center;
+            gap: 10px; border: 1px solid var(--soft-pink); opacity: 0; transition: opacity 0.5s ease;
+        }
+    </style>
+</head>
+<body class="p-4">
+
+    <div class="heart-bg" id="heartContainer"></div>
+
+    <audio id="bgMusic" loop>
+        <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808f3030c.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="musicPill" class="music-control">
+        <span id="musicIcon">🎵</span>
+        <span class="font-medium text-xs md:text-sm">Playing Love Song...</span>
+        <button id="muteBtn" class="ml-2">🔊</button>
+    </div>
+
+    <div class="relative z-10 w-full flex flex-col items-center justify-center">
+
+        <!-- Phase 1 -->
+        <div id="phase1" class="phase-transition w-full max-w-lg mx-auto">
+            <div class="bg-white/80 backdrop-blur-md rounded-3xl p-10 shadow-2xl border-2 border-[#FFB7C5] text-center">
+                <div class="text-6xl mb-6">❤️</div>
+                <h1 class="font-romantic text-5xl md:text-6xl text-[#C41E3A] mb-8">Darling, will you be my Valentine?</h1>
+                <div id="proposalActions" class="flex flex-row justify-center items-center gap-6 mt-10 relative">
+                    <button id="yesBtn" class="px-8 py-4 bg-[#C41E3A] text-white rounded-full text-xl font-semibold shadow-lg hover:bg-[#A01830] transition-all whitespace-nowrap">
+                        Yes, Forever!
+                    </button>
+                    <button id="noBtn" class="no-button px-8 py-4 bg-gray-200 text-gray-600 rounded-full text-xl font-semibold shadow-md whitespace-nowrap">
+                        No
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 2 -->
+        <div id="phase2" class="phase-transition hidden-phase w-full max-w-xl mx-auto">
+            <div class="bg-white/90 backdrop-blur-md rounded-3xl p-8 shadow-2xl border-t-8 border-[#C41E3A] quiz-float">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="text-[#C41E3A] font-bold text-sm uppercase tracking-widest">Love Quiz</span>
+                    <span id="quizProgress" class="text-gray-400 text-sm font-medium">1 / 5</span>
+                </div>
+                <div id="questionContainer">
+                    <h2 id="questionText" class="font-serif text-2xl md:text-3xl font-bold text-gray-800 mb-8 leading-tight"></h2>
+                    <div id="optionsContainer" class="space-y-4"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 3 -->
+        <div id="phase3" class="phase-transition hidden-phase text-center flex flex-col items-center justify-center">
+            <div id="confettiAnchor" class="absolute w-1 h-1"></div>
+            <div class="celebration-text">
+                <h1 class="font-romantic text-7xl text-[#C41E3A] mb-4 drop-shadow-md">You're My Heart!</h1>
+                <p class="text-gray-600 italic mb-10 text-lg">Every moment with you is a gift...</p>
+            </div>
+            <button id="viewSurpriseBtn" class="btn-gold pulse-gold px-12 py-5 rounded-full text-2xl font-bold uppercase tracking-widest shadow-xl">
+                View My Surprise
+            </button>
+        </div>
+
+        <!-- Phase 4 -->
+        <div id="phase4" class="phase-transition hidden-phase w-full max-w-6xl py-20 mx-auto">
+            <h2 class="font-romantic text-5xl text-center text-[#C41E3A] mb-16">Our Beautiful Journey</h2>
+            <p class="text-center text-gray-500 -mt-12 mb-12 italic">(Hover or tap to see my secret message)</p>
+            
+            <div class="flex flex-wrap justify-center gap-12 px-4">
+                <div class="hanging-card">
+                    <div class="string"></div>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-white p-3 shadow-xl border border-gray-100 rotate-1">
+                                <img src="https://via.placeholder.com/300x400?text=The+Beginning" alt="Memory" class="w-full h-full object-cover rounded-lg">
+                            </div>
+                            <div class="flip-card-back">
+                                <h3 class="font-romantic text-3xl mb-4">Day One</h3>
+                                <p class="font-serif">I knew from the very first second that you were someone special. My world changed that day.</p>
+                                <span class="mt-6 text-2xl">✨</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hanging-card" style="animation-delay: 0.5s;">
+                    <div class="string"></div>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-white p-3 shadow-xl border border-gray-100 -rotate-2">
+                                <img src="https://via.placeholder.com/300x400?text=Our+Laughter" alt="Memory" class="w-full h-full object-cover rounded-lg">
+                            </div>
+                            <div class="flip-card-back">
+                                <h3 class="font-romantic text-3xl mb-4">Pure Joy</h3>
+                                <p class="font-serif">No one makes me laugh as much as you do. Your happiness is my favorite sight in the world.</p>
+                                <span class="mt-6 text-2xl">💖</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hanging-card" style="animation-delay: 1s;">
+                    <div class="string"></div>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-white p-3 shadow-xl border border-gray-100 rotate-2">
+                                <img src="https://via.placeholder.com/300x400?text=Our+Future" alt="Memory" class="w-full h-full object-cover rounded-lg">
+                            </div>
+                            <div class="flip-card-back">
+                                <h3 class="font-romantic text-3xl mb-4">Forever</h3>
+                                <p class="font-serif">I can't wait to see where the road takes us next. As long as I'm with you, I'm home.</p>
+                                <span class="mt-6 text-2xl">🏠❤️</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-20">
+                <p class="font-romantic text-3xl text-[#C41E3A]">I Love You Forever ❤️</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- SPARKLE CURSOR ---
+        document.addEventListener('mousemove', (e) => {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = e.clientX + 'px';
+            sparkle.style.top = e.clientY + 'px';
+            const size = Math.random() * 8 + 4;
+            sparkle.style.width = size + 'px';
+            sparkle.style.height = size + 'px';
+            sparkle.style.background = ['#C41E3A', '#FFB7C5', '#D4AF37'][Math.floor(Math.random()*3)];
+            document.body.appendChild(sparkle);
+            setTimeout(() => {
+                sparkle.style.transform = `translate(${(Math.random()-0.5)*50}px, ${(Math.random()-0.5)*50}px) scale(0)`;
+                sparkle.style.opacity = '0';
+            }, 50);
+            setTimeout(() => sparkle.remove(), 600);
+        });
+
+        // --- AUDIO ---
+        const bgMusic = document.getElementById('bgMusic');
+        const musicPill = document.getElementById('musicPill');
+        const muteBtn = document.getElementById('muteBtn');
+        let isMuted = false;
+
+        function playMusic() {
+            bgMusic.play().then(() => { musicPill.style.opacity = '1'; }).catch(() => {});
+        }
+
+        muteBtn.addEventListener('click', () => {
+            isMuted = !isMuted;
+            bgMusic.muted = isMuted;
+            muteBtn.innerText = isMuted ? '🔇' : '🔊';
+        });
+
+        // --- BACKGROUND ---
+        function createHearts() {
+            const container = document.getElementById('heartContainer');
+            const heartIcons = ['❤️', '💖', '🌸', '💕'];
+            for (let i = 0; i < 25; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.innerText = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = Math.random() * 15 + 's';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                container.appendChild(heart);
+            }
+        }
+        createHearts();
+
+        // --- PROPOSAL LOGIC ---
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+
+        const moveNoButton = () => {
+            const maxX = window.innerWidth - noBtn.offsetWidth;
+            const maxY = window.innerHeight - noBtn.offsetHeight;
+            noBtn.style.position = 'fixed'; 
+            noBtn.style.left = `${Math.random() * maxX}px`;
+            noBtn.style.top = `${Math.random() * maxY}px`;
+            noBtn.style.margin = '0';
+        };
+
+        noBtn.addEventListener('mouseover', moveNoButton);
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            moveNoButton();
+        });
+
+        yesBtn.addEventListener('click', () => {
+            playMusic();
+            transitionTo('phase1', 'phase2');
+            startQuiz();
+        });
+
+        // --- QUIZ DATA ---
+        const quizData = [
+            { q: "Where was our very first date?", a: ["Cozy Café", "The Park", "Movie Theater"], correct: 0 },
+            { q: "What's my favorite thing about you?", a: ["Your Smile", "Your Kindness", "Everything"], correct: 2 },
+            { q: "Which season do we love most?", a: ["Warm Summer", "Crisp Autumn", "Cozy Winter"], correct: 1 },
+            { q: "What is our secret song?", a: ["Perfect", "Lover", "Something Special"], correct: 0 },
+            { q: "Are you ready for a lifetime of love?", a: ["Absolutely", "Yes Please", "I'm yours"], correct: 2 }
+        ];
+        let currentQuestion = 0;
+
+        function startQuiz() { showQuestion(); }
+        function showQuestion() {
+            const data = quizData[currentQuestion];
+            const qContainer = document.getElementById('questionContainer');
+            qContainer.classList.remove('question-fade-in');
+            void qContainer.offsetWidth; 
+            qContainer.classList.add('question-fade-in');
+            document.getElementById('quizProgress').innerText = `${currentQuestion + 1} / ${quizData.length}`;
+            document.getElementById('questionText').innerText = data.q;
+            const container = document.getElementById('optionsContainer');
+            container.innerHTML = '';
+            data.a.forEach((option, index) => {
+                const btn = document.createElement('button');
+                btn.className = "option-pop w-full text-left p-5 rounded-2xl border-2 border-pink-100 hover:border-[#C41E3A] hover:bg-pink-50 transition-all font-medium text-gray-700 flex justify-between items-center group";
+                btn.innerHTML = `<span>${option}</span><span class="opacity-0 group-hover:opacity-100 text-[#C41E3A]">❤️</span>`;
+                btn.onclick = () => handleAnswer(index);
+                container.appendChild(btn);
+            });
+        }
+
+        function handleAnswer(index) {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                showQuestion();
+            } else {
+                transitionTo('phase2', 'phase3');
+                setTimeout(triggerCelebration, 400);
+            }
+        }
+
+        // --- CELEBRATION ---
+        function triggerCelebration() {
+            const anchor = document.getElementById('confettiAnchor');
+            const colors = ['#C41E3A', '#FFB7C5', '#D4AF37', '#FF69B4'];
+            for (let i = 0; i < 80; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'confetti-heart';
+                    heart.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    anchor.appendChild(heart);
+                    const angle = Math.random() * Math.PI * 2;
+                    const velocity = 4 + Math.random() * 12;
+                    let vx = Math.cos(angle) * velocity;
+                    let vy = Math.sin(angle) * velocity;
+                    let gravity = 0.15;
+                    let opacity = 1;
+                    const interval = setInterval(() => {
+                        vy += gravity;
+                        heart.style.left = (parseFloat(heart.style.left || 0) + vx) + 'px';
+                        heart.style.top = (parseFloat(heart.style.top || 0) + vy) + 'px';
+                        opacity -= 0.015;
+                        heart.style.opacity = opacity;
+                        if (opacity <= 0) { clearInterval(interval); heart.remove(); }
+                    }, 16);
+                }, i * 15);
+            }
+        }
+
+        document.getElementById('viewSurpriseBtn').addEventListener('click', () => transitionTo('phase3', 'phase4'));
+
+        function transitionTo(fromId, toId) {
+            const from = document.getElementById(fromId);
+            const to = document.getElementById(toId);
+            from.style.opacity = '0';
+            from.style.transform = 'translateY(-20px)';
+            setTimeout(() => {
+                from.classList.add('hidden-phase');
+                to.classList.remove('hidden-phase');
+                void to.offsetWidth; 
+                to.style.opacity = '1';
+                to.style.transform = 'translateY(0)';
+            }, 800);
+        }
+    </script>
+</body>
+</html>
