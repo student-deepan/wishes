@@ -9,7 +9,7 @@
     <meta name="description" content="I have a very important question to ask you... please open this to see what's inside my heart.">
     <meta property="og:title" content="Will You Be My Valentine? ❤️">
     <meta property="og:description" content="A special surprise journey created just for you. Every moment leads to this question...">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&q=80&w=1000">
+    <meta property="og:image" content="https://editorial.rottentomatoes.com/wp-content/uploads/2019/05/Rt21-UP-Featured1.jpg?w=600">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     
@@ -34,13 +34,12 @@
             align-items: center;
             justify-content: center;
             margin: 0;
-            cursor: none; /* Custom cursor trail */
+            cursor: none; 
         }
 
         .font-romantic { font-family: 'Dancing Script', cursive; }
         .font-serif { font-family: 'Playfair Display', serif; }
 
-        /* Custom Cursor Sparkle */
         .sparkle {
             position: fixed;
             width: 8px;
@@ -52,7 +51,7 @@
             transition: transform 0.1s linear, opacity 0.5s ease-out;
         }
 
-        /* Floating Hearts Background */
+        /* Floating "B" and Hearts Background */
         .heart-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -60,19 +59,19 @@
             z-index: 0;
         }
 
-        .floating-heart {
+        .floating-element {
             position: absolute;
             color: var(--crimson);
             opacity: 0.15;
             animation: float 15s infinite linear;
+            user-select: none;
         }
 
         @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg) scale(1); }
+            0% { transform: translateY(110vh) rotate(0deg) scale(1); }
             100% { transform: translateY(-10vh) rotate(360deg) scale(1.5); }
         }
 
-        /* Transitions */
         .phase-transition {
             transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
         }
@@ -83,7 +82,6 @@
             transform: translateY(20px);
         }
 
-        /* Flip Card Logic */
         .flip-card {
             background-color: transparent;
             width: 300px;
@@ -128,14 +126,22 @@
             border: 2px dashed var(--soft-pink);
         }
 
-        /* Animations */
         .quiz-float { animation: quizFloat 6s ease-in-out infinite; }
         @keyframes quizFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-        .confetti-heart {
-            position: absolute; width: 20px; height: 20px;
-            background-color: var(--crimson); transform: rotate(-45deg);
+        /* Celebration Particle Style */
+        .particle {
+            position: absolute;
             pointer-events: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .confetti-heart {
+            width: 20px; height: 20px;
+            background-color: var(--crimson); transform: rotate(-45deg);
         }
         .confetti-heart::before, .confetti-heart::after {
             content: ""; position: absolute; width: 20px; height: 20px;
@@ -167,7 +173,7 @@
 
         .music-control {
             position: fixed; bottom: 20px; right: 20px; z-index: 100;
-            background: rgba(255, 255, 255, 0.8); backdrop-blur: 5px;
+            background: rgba(255, 255, 255, 0.8); 
             padding: 8px 15px; border-radius: 50px; display: flex; align-items: center;
             gap: 10px; border: 1px solid var(--soft-pink); opacity: 0; transition: opacity 0.5s ease;
         }
@@ -175,10 +181,10 @@
 </head>
 <body class="p-4">
 
-    <div class="heart-bg" id="heartContainer"></div>
+    <div class="heart-bg" id="backgroundContainer"></div>
 
     <audio id="bgMusic" loop>
-        <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808f3030c.mp3" type="audio/mpeg">
+        <source src="./audio.mp3" type="audio/mpeg">
     </audio>
 
     <div id="musicPill" class="music-control">
@@ -193,7 +199,7 @@
         <div id="phase1" class="phase-transition w-full max-w-lg mx-auto">
             <div class="bg-white/80 backdrop-blur-md rounded-3xl p-10 shadow-2xl border-2 border-[#FFB7C5] text-center">
                 <div class="text-6xl mb-6">❤️</div>
-                <h1 class="font-romantic text-5xl md:text-6xl text-[#C41E3A] mb-8">Darling, will you be my Valentine?</h1>
+                <h1 class="font-romantic text-5xl md:text-6xl text-[#C41E3A] mb-8">To My Valentine</h1>
                 <div id="proposalActions" class="flex flex-row justify-center items-center gap-6 mt-10 relative">
                     <button id="yesBtn" class="px-8 py-4 bg-[#C41E3A] text-white rounded-full text-xl font-semibold shadow-lg hover:bg-[#A01830] transition-all whitespace-nowrap">
                         Yes, Forever!
@@ -223,7 +229,7 @@
         <div id="phase3" class="phase-transition hidden-phase text-center flex flex-col items-center justify-center">
             <div id="confettiAnchor" class="absolute w-1 h-1"></div>
             <div class="celebration-text">
-                <h1 class="font-romantic text-7xl text-[#C41E3A] mb-4 drop-shadow-md">You're My Heart!</h1>
+                <h1 class="font-romantic text-7xl text-[#C41E3A] mb-4 drop-shadow-md">You're My Everything, B!</h1>
                 <p class="text-gray-600 italic mb-10 text-lg">Every moment with you is a gift...</p>
             </div>
             <button id="viewSurpriseBtn" class="btn-gold pulse-gold px-12 py-5 rounded-full text-2xl font-bold uppercase tracking-widest shadow-xl">
@@ -242,7 +248,7 @@
                     <div class="flip-card">
                         <div class="flip-card-inner">
                             <div class="flip-card-front bg-white p-3 shadow-xl border border-gray-100 rotate-1">
-                                <img src="https://via.placeholder.com/300x400?text=The+Beginning" alt="Memory" class="w-full h-full object-cover rounded-lg">
+                                <img src="/img4.jpg" alt="Memory" class="w-full h-full object-cover rounded-lg">
                             </div>
                             <div class="flip-card-back">
                                 <h3 class="font-romantic text-3xl mb-4">Day One</h3>
@@ -258,7 +264,7 @@
                     <div class="flip-card">
                         <div class="flip-card-inner">
                             <div class="flip-card-front bg-white p-3 shadow-xl border border-gray-100 -rotate-2">
-                                <img src="https://via.placeholder.com/300x400?text=Our+Laughter" alt="Memory" class="w-full h-full object-cover rounded-lg">
+                                <img src="/img1.jpg" alt="Memory" class="w-full h-full object-cover rounded-lg">
                             </div>
                             <div class="flip-card-back">
                                 <h3 class="font-romantic text-3xl mb-4">Pure Joy</h3>
@@ -274,7 +280,7 @@
                     <div class="flip-card">
                         <div class="flip-card-inner">
                             <div class="flip-card-front bg-white p-3 shadow-xl border border-gray-100 rotate-2">
-                                <img src="https://via.placeholder.com/300x400?text=Our+Future" alt="Memory" class="w-full h-full object-cover rounded-lg">
+                                <img src="/img3.jpg" alt="Memory" class="w-full h-full object-cover rounded-lg">
                             </div>
                             <div class="flip-card-back">
                                 <h3 class="font-romantic text-3xl mb-4">Forever</h3>
@@ -287,7 +293,7 @@
             </div>
 
             <div class="text-center mt-20">
-                <p class="font-romantic text-3xl text-[#C41E3A]">I Love You Forever ❤️</p>
+                <p class="font-romantic text-3xl text-[#C41E3A]">I Love You Forever, B ❤️</p>
             </div>
         </div>
     </div>
@@ -328,20 +334,22 @@
         });
 
         // --- BACKGROUND ---
-        function createHearts() {
-            const container = document.getElementById('heartContainer');
-            const heartIcons = ['❤️', '💖', '🌸', '💕'];
-            for (let i = 0; i < 25; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'floating-heart';
-                heart.innerText = heartIcons[Math.floor(Math.random() * heartIcons.length)];
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDelay = Math.random() * 15 + 's';
-                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-                container.appendChild(heart);
+        function createBackgroundElements() {
+            const container = document.getElementById('backgroundContainer');
+            const icons = ['❤️', 'B', '💖', 'B', '💕'];
+            for (let i = 0; i < 30; i++) {
+                const el = document.createElement('div');
+                el.className = 'floating-element';
+                el.innerText = icons[Math.floor(Math.random() * icons.length)];
+                el.style.left = Math.random() * 100 + 'vw';
+                el.style.animationDelay = Math.random() * 15 + 's';
+                const baseSize = el.innerText === 'B' ? 24 : 16;
+                el.style.fontSize = (Math.random() * 20 + baseSize) + 'px';
+                if(el.innerText === 'B') el.style.fontWeight = 'bold';
+                container.appendChild(el);
             }
         }
-        createHearts();
+        createBackgroundElements();
 
         // --- PROPOSAL LOGIC ---
         const noBtn = document.getElementById('noBtn');
@@ -412,31 +420,48 @@
         function triggerCelebration() {
             const anchor = document.getElementById('confettiAnchor');
             const colors = ['#C41E3A', '#FFB7C5', '#D4AF37', '#FF69B4'];
-            for (let i = 0; i < 80; i++) {
+            for (let i = 0; i < 100; i++) {
                 setTimeout(() => {
-                    const heart = document.createElement('div');
-                    heart.className = 'confetti-heart';
-                    heart.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                    anchor.appendChild(heart);
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    
+                    // Alternate between B and Hearts
+                    if (Math.random() > 0.4) {
+                        const heart = document.createElement('div');
+                        heart.className = 'confetti-heart';
+                        heart.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                        particle.appendChild(heart);
+                    } else {
+                        particle.innerText = 'B';
+                        particle.style.color = colors[Math.floor(Math.random() * colors.length)];
+                        particle.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                        particle.style.fontFamily = "'Dancing Script', cursive";
+                    }
+
+                    anchor.appendChild(particle);
+                    
                     const angle = Math.random() * Math.PI * 2;
-                    const velocity = 4 + Math.random() * 12;
+                    const velocity = 5 + Math.random() * 15;
                     let vx = Math.cos(angle) * velocity;
                     let vy = Math.sin(angle) * velocity;
-                    let gravity = 0.15;
+                    let gravity = 0.2;
                     let opacity = 1;
                     const interval = setInterval(() => {
                         vy += gravity;
-                        heart.style.left = (parseFloat(heart.style.left || 0) + vx) + 'px';
-                        heart.style.top = (parseFloat(heart.style.top || 0) + vy) + 'px';
-                        opacity -= 0.015;
-                        heart.style.opacity = opacity;
-                        if (opacity <= 0) { clearInterval(interval); heart.remove(); }
+                        particle.style.left = (parseFloat(particle.style.left || 0) + vx) + 'px';
+                        particle.style.top = (parseFloat(particle.style.top || 0) + vy) + 'px';
+                        opacity -= 0.012;
+                        particle.style.opacity = opacity;
+                        if (opacity <= 0) { clearInterval(interval); particle.remove(); }
                     }, 16);
-                }, i * 15);
+                }, i * 12);
             }
         }
 
-        document.getElementById('viewSurpriseBtn').addEventListener('click', () => transitionTo('phase3', 'phase4'));
+        document.getElementById('viewSurpriseBtn').addEventListener('click', () => {
+            triggerCelebration(); // Explode again when clicking surprise!
+            setTimeout(() => transitionTo('phase3', 'phase4'), 600);
+        });
 
         function transitionTo(fromId, toId) {
             const from = document.getElementById(fromId);
